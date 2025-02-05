@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
-from typing import List, Dict, Any
+from typing import Any
 
 
 class IssueStatus(Enum):
@@ -14,9 +14,8 @@ class IssueStatus(Enum):
 
 class IssueObserver(ABC):
     @abstractmethod
-    def update(self, issue: 'Issue', changed_fields: Dict[str, Any]) -> None:
+    def update(self, issue: "Issue", changed_fields: dict[str, Any]) -> None:
         """Called when the observed issue is updated."""
-        pass
 
 
 @dataclass
@@ -27,9 +26,9 @@ class Issue:
     created_at: datetime = None
     updated_at: datetime = None
     assigned_to: str = None
-    
+
     def __post_init__(self):
-        self._observers: List[IssueObserver] = []
+        self._observers: list[IssueObserver] = []
         if self.created_at is None:
             self.created_at = datetime.now()
         self.updated_at = self.created_at
@@ -43,7 +42,7 @@ class Issue:
         """Remove an observer from the issue."""
         self._observers.remove(observer)
 
-    def _notify(self, changed_fields: Dict[str, Any]) -> None:
+    def _notify(self, changed_fields: dict[str, Any]) -> None:
         """Notify all observers about changes."""
         for observer in self._observers:
             observer.update(self, changed_fields)
@@ -62,4 +61,4 @@ class Issue:
             old_assignee = self.assigned_to
             self.assigned_to = assignee
             self.updated_at = datetime.now()
-            self._notify({"assigned_to": {"old": old_assignee, "new": assignee}}) 
+            self._notify({"assigned_to": {"old": old_assignee, "new": assignee}})

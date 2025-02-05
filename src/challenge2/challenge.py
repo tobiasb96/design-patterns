@@ -1,5 +1,4 @@
-"""
-Challenge 2: Document Converter System
+"""Challenge 2: Document Converter System.
 
 Requirements:
 ------------
@@ -10,7 +9,7 @@ Requirements:
 
 Hints:
 ------
-- Use a Factory pattern so that adding a new document converter does not require 
+- Use a Factory pattern so that adding a new document converter does not require
   changing the central engine code (OCP)
 - Ensure that your converter classes only focus on the conversion logic (SRP)
 - The solution should be easily extensible when supporting new file formats
@@ -25,4 +24,4 @@ Example Test Cases to Consider:
 6. Test that adding a new converter type doesn't break existing functionality
 """
 
-# Implement your solution here 
+# Implement your solution here

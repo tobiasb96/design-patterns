@@ -1,5 +1,4 @@
-"""
-Challenge 1: Bug Tracker with Dynamic Notifications
+"""Challenge 1: Bug Tracker with Dynamic Notifications.
 
 Requirements:
 ------------
@@ -10,13 +9,13 @@ Requirements:
 
 Hints:
 ------
-- Consider implementing a custom event or signal system (Observer pattern)
-- Ensure that the Issue class itself remains focused on tracking bug details (SRP)
-- Your design should allow for additional observers (e.g., logging, email notifications) 
-  to be added later without modifying the Issue class
-
-Example Test Cases to Consider:
------------------------------
+# Implement a decoupled notification system using the Observer pattern.
+# The Issue class should focus solely on managing bug details (in keeping with the Single Responsibility Principle).
+# Delegate notification responsibilities to external observers so that they can be added or removed at runtime
+# (e.g., for logging or email notifications) without modifying the Issue class.
+#
+# Example Test Cases to Consider:
+# -----------------------------
 1. Test issue creation with default values
 2. Test attaching and detaching observers
 3. Test that observers are notified when issue status changes
@@ -25,4 +24,4 @@ Example Test Cases to Consider:
 6. Test multiple observers receiving notifications
 """
 
-# Implement your solution here 
+# Implement your solution here

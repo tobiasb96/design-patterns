@@ -1,5 +1,4 @@
-"""
-Challenge 5: Extend a Basic Web Request Handler
+"""Challenge 5: Extend a Basic Web Request Handler.
 
 Requirements:
 ------------
@@ -14,9 +13,9 @@ The following class CANNOT be modified:
 """
 
 class RequestHandler:
-    def handle_request(self, request):
+    def handle_request(self, request) -> None:
         # Process the incoming request
-        print(f"Handling request: {request}")
+        pass
 
 
 """
@@ -37,4 +36,4 @@ Example Test Cases to Consider:
 6. Test error handling in decorators
 """
 
-# Implement your solution here 
+# Implement your solution here

@@ -1,5 +1,4 @@
-"""
-Challenge 2: Document Converter System
+"""Challenge 2: Document Converter System.
 
 Your Task:
 ---------
@@ -12,67 +11,60 @@ Requirements for the refactored solution:
 3. Each converter should focus only on its conversion logic (SRP)
 4. Provide a clean interface for client code to use
 """
+import contextlib
 
 
 class DocumentConverter:
-    def __init__(self):
-        self.supported_conversions = ['pdf_to_txt', 'docx_to_txt']
+    def __init__(self) -> None:
+        self.supported_conversions = ["pdf_to_txt", "docx_to_txt"]
 
-    def convert_document(self, source_path: str, target_path: str):
+    def convert_document(self, source_path: str, target_path: str) -> bool:
         # Extract file extensions
-        source_ext = source_path.split('.')[-1].lower()
-        target_ext = target_path.split('.')[-1].lower()
+        source_ext = source_path.split(".")[-1].lower()
+        target_ext = target_path.split(".")[-1].lower()
         conversion_type = f"{source_ext}_to_{target_ext}"
 
         if conversion_type not in self.supported_conversions:
-            raise ValueError(f"Unsupported conversion: {conversion_type}")
+            msg = f"Unsupported conversion: {conversion_type}"
+            raise ValueError(msg)
 
         # Large if-else block that handles different conversion types
-        if conversion_type == 'pdf_to_txt':
-            print(f"Reading PDF file: {source_path}")
+        if conversion_type == "pdf_to_txt":
             # Simulate PDF reading
             content = f"PDF content from {source_path}"
-            
-            print("Converting PDF to text...")
+
             # Simulate conversion
             converted_text = content.upper()
-            
-            print(f"Writing text to: {target_path}")
-            with open(target_path, 'w') as f:
+
+            with open(target_path, "w") as f:
                 f.write(converted_text)
 
-        elif conversion_type == 'docx_to_txt':
-            print(f"Reading DOCX file: {source_path}")
+        elif conversion_type == "docx_to_txt":
             # Simulate DOCX reading
             content = f"DOCX content from {source_path}"
-            
-            print("Converting DOCX to text...")
+
             # Different conversion logic for DOCX
             converted_text = content.lower()
-            
-            print(f"Writing text to: {target_path}")
-            with open(target_path, 'w') as f:
+
+            with open(target_path, "w") as f:
                 f.write(converted_text)
 
-        print("Conversion completed!")
         return True
 
 
 # Example usage of the current implementation:
 if __name__ == "__main__":
     converter = DocumentConverter()
-    
+
     # Convert a PDF file
     converter.convert_document("sample.pdf", "output.txt")
-    
+
     # Convert a DOCX file
     converter.convert_document("sample.docx", "output.txt")
-    
+
     # This will raise an error
-    try:
+    with contextlib.suppress(ValueError):
         converter.convert_document("sample.jpg", "output.txt")
-    except ValueError as e:
-        print(f"Error: {e}")
 
 # Problems with this implementation:
 # 1. Single class handling all conversion types (violates SRP)
@@ -82,4 +74,4 @@ if __name__ == "__main__":
 # 5. Hard to test individual conversion types
 # 6. No clear extension points for new formats
 
-# Implement your refactored solution below using the Factory pattern 
+# Implement your refactored solution below using the Factory pattern

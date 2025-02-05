@@ -1,12 +1,13 @@
-"""
-Test cases for Challenge 3: CustomerManager Refactoring
+"""Test cases for Challenge 3: CustomerManager Refactoring.
 
 These tests should pass both before and after your refactoring,
 ensuring that the functionality remains the same while the code structure improves.
 """
 
-import pytest
 import os
+
+import pytest
+
 from src.challenge3.customer_manager import CustomerManager
 
 
@@ -15,7 +16,7 @@ def customer_data():
     return {
         "name": "Alice Smith",
         "email": "alice@example.com",
-        "address": "123 Main St"
+        "address": "123 Main St",
     }
 
 
@@ -30,34 +31,34 @@ def clean_customer_file():
         os.remove("customers.txt")
 
 
-def test_customer_initialization(customer_data):
+def test_customer_initialization(customer_data) -> None:
     manager = CustomerManager(customer_data)
     assert manager.customer_data == customer_data
 
 
-def test_save_customer_creates_file(customer_data, clean_customer_file):
+def test_save_customer_creates_file(customer_data, clean_customer_file) -> None:
     manager = CustomerManager(customer_data)
     manager.save_customer()
     assert os.path.exists("customers.txt")
 
 
-def test_save_customer_writes_data(customer_data, clean_customer_file):
+def test_save_customer_writes_data(customer_data, clean_customer_file) -> None:
     manager = CustomerManager(customer_data)
     manager.save_customer()
-    
-    with open("customers.txt", "r") as f:
+
+    with open("customers.txt") as f:
         content = f.read().strip()
-    
+
     assert str(customer_data) in content
 
 
-def test_process_customer_workflow(customer_data, clean_customer_file, capsys):
+def test_process_customer_workflow(customer_data, clean_customer_file, capsys) -> None:
     manager = CustomerManager(customer_data)
     manager.process_customer()
-    
+
     # Check if file was created
     assert os.path.exists("customers.txt")
-    
+
     # Check if email was "sent"
     captured = capsys.readouterr()
     assert "Sending welcome email to alice@example.com" in captured.out
@@ -69,4 +70,4 @@ def test_process_customer_workflow(customer_data, clean_customer_file, capsys):
 # 2. Test email format validation
 # 3. Test handling of missing customer data
 # 4. Test file append functionality (multiple customers)
-# 5. Test error handling for file operations 
+# 5. Test error handling for file operations

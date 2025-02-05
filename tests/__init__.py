@@ -1,3 +1,1 @@
-"""
-Design Patterns Challenges - Test Package
-""" 
+"""Design Patterns Challenges - Test Package."""

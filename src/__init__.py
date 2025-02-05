@@ -1,3 +1,1 @@
-"""
-Design Patterns Challenges - Source Package
-""" 
+"""Design Patterns Challenges - Source Package."""

@@ -1,5 +1,4 @@
-"""
-Challenge 4: Integrate a Legacy Payment Gateway
+"""Challenge 4: Integrate a Legacy Payment Gateway.
 
 Requirements:
 ------------
@@ -12,16 +11,16 @@ The following classes CANNOT be modified:
 
 # Legacy Payment Gateway (cannot be modified)
 class LegacyPaymentGateway:
-    def make_payment(self, value):
-        print(f"Legacy payment processed: {value}")
+    def make_payment(self, value) -> None:
+        pass
 
 
 # Modern system interface (cannot be modified)
 class Checkout:
-    def __init__(self, payment_gateway):
+    def __init__(self, payment_gateway) -> None:
         self.payment_gateway = payment_gateway
 
-    def complete_order(self, amount):
+    def complete_order(self, amount) -> None:
         self.payment_gateway.process(amount)
 
 
@@ -40,4 +39,4 @@ Example Test Cases to Consider:
 4. Test that the original LegacyPaymentGateway behavior is preserved
 """
 
-# Implement your solution here 
+# Implement your solution here
