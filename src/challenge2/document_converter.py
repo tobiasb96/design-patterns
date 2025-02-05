@@ -13,6 +13,7 @@ Requirements for the refactored solution:
 4. Provide a clean interface for client code to use
 """
 
+
 class DocumentConverter:
     def __init__(self):
         self.supported_conversions = ['pdf_to_txt', 'docx_to_txt']

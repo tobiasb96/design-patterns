@@ -24,27 +24,20 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 2. Create a new virtual environment and install dependencies:
 ```bash
-uv venv
-source .venv/bin/activate  # On Unix/macOS
-# or
-.venv\Scripts\activate  # On Windows
-```
-
-3. Install dependencies:
-```bash
-uv pip install -r requirements.txt
+uv init
+uv sync
 ```
 
 ## Running Tests
 
 To run all tests:
 ```bash
-pytest
+uv pytest
 ```
 
 To run tests with coverage:
 ```bash
-pytest --cov=src tests/
+uv pytest --cov=src tests/
 ```
 
 ## Challenges
