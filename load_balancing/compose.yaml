@@ -1,0 +1,7 @@
+services:
+  fastapi:
+    image: fastapi
+    ports:
+      - "8000:8000"
+    deploy:
+      replicas: 1
