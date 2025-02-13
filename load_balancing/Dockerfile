@@ -17,5 +17,5 @@ EXPOSE 8000
 
 CMD ["uv", "run", "uvicorn", "load_balancing.main:app", "--host", "0.0.0.0", "--log-level", "debug"]
 
-# host 0.0.0.0 to be able to access the fastapi server from outside the container
+# host 0.0.0.0 to be able to access the fastapi server from outside the container -> go to http://localhost:8000
 # for building: docker build -f load_balancing/Dockerfile -t fastapi .
