@@ -8,7 +8,7 @@ import os
 
 import pytest
 
-from src.challenge3.customer_manager import CustomerManager
+from design_patterns.src import CustomerManager
 
 
 @pytest.fixture

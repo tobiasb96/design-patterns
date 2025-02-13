@@ -8,7 +8,7 @@ import os
 
 import pytest
 
-from src.challenge2.document_converter import DocumentConverter
+from design_patterns.src.challenge2.document_converter import DocumentConverter
 
 
 @pytest.fixture

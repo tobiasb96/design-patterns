@@ -2,8 +2,8 @@ from datetime import datetime
 
 import pytest
 
-from src.challenge1.issue import Issue, IssueStatus
-from src.challenge1.observers import EmailNotifier, LoggingObserver, SlackNotifier
+from design_patterns.src import Issue, IssueStatus
+from design_patterns.src import EmailNotifier, LoggingObserver, SlackNotifier
 
 
 @pytest.fixture

@@ -1,7 +1,7 @@
 import logging
 from typing import Protocol
 
-from src.challenge5.challenge import RequestHandler
+from design_patterns.src.challenge5.challenge import RequestHandler
 
 
 class RequestHandlerProtocol(Protocol):
