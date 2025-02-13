@@ -64,7 +64,7 @@ class DocxToTxtConverter(DocumentToTxtConverter):
 
 
 if __name__ == "__main__":
-    converters = [PdfToTxtConverter(), DocxToTxtConverter]
+    converters = [PdfToTxtConverter(), DocxToTxtConverter()]
     converter_factory = DocumentToTxtConverterFactory(converters)
 
     converter_factory.convert_file_to_txt("./pdfs/my_pdf.pdf")
