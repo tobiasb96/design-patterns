@@ -15,6 +15,7 @@ RUN uv sync --frozen
 
 EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--log-level", "debug"]
+CMD ["uv", "run", "uvicorn", "load_balancing.main:app", "--host", "0.0.0.0", "--log-level", "debug"]
 
+# host 0.0.0.0 to be able to access the fastapi server from outside the container
 # for building: docker build -f load_balancing/Dockerfile -t fastapi .
