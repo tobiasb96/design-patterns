@@ -13,9 +13,8 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 RUN uv sync --frozen
 
-EXPOSE 8000
-
 CMD ["uv", "run", "uvicorn", "load_balancing.main:app", "--host", "0.0.0.0", "--log-level", "debug"]
 
-# host 0.0.0.0 to be able to access the fastapi server from outside the container -> go to http://localhost:8000
+# host 0.0.0.0 to make the fastapi server accessible to the nginx container
+
 # for building: docker build -f load_balancing/Dockerfile -t fastapi .

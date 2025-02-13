@@ -1,7 +1,14 @@
 services:
   fastapi:
     image: fastapi
-    ports:
-      - "8000:8000"
     deploy:
-      replicas: 1
+      replicas: 2
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx:/etc/nginx/templates
+    ports:
+      - "8000:80"
+    depends_on:
+      - fastapi
