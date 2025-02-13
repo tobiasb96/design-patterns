@@ -136,22 +136,22 @@ class ConverterFactory:
 
 
 class ConverterEngine:
-    def __init__(self):
-        pass
+    def __init__(self, converter_factory: ConverterFactory):
+        self.converter_factory = converter_factory
 
-    @staticmethod
-    def handle_conversion(source_path: str, target_path: str):
-        converter = ConverterFactory().create(source_path, target_path)
+    def handle_conversion(self, source_path: str, target_path: str):
+        converter = self.converter_factory.create(source_path, target_path)
         converter.convert()
 
 
 if __name__ == "__main__":
+    converter_factory = ConverterFactory()
     # Convert a PDF file
-    ConverterEngine.handle_conversion("sample.pdf", "output.txt")
+    ConverterEngine(converter_factory).handle_conversion("sample.pdf", "output.txt")
 
     # Convert a DOCX file
-    ConverterEngine.handle_conversion("sample.docx", "output.txt")
+    ConverterEngine(converter_factory).handle_conversion("sample.docx", "output.txt")
 
     # Handle unsupported conversion gracefully
-    with contextlib.suppress(ValueError):
+    with contextlib.suppress(TypeError):
         ConverterEngine.handle_conversion("sample.jpg", "output.txt")
