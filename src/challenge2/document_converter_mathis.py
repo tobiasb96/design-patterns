@@ -63,7 +63,7 @@ class DocxToTxtConverter(DocumentToTxtConverter):
         # save it as a .txt file
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     converters = [PdfToTxtConverter(), DocxToTxtConverter]
     converter_factory = DocumentToTxtConverterFactory(converters)
 
